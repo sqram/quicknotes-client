@@ -55,7 +55,7 @@ export default {
 
       handleSideLinkClick (e)
       {
-        // TODO make scroll stop when clicking 
+        // TODO make scroll stop when clicking  
         e.preventDefault()
         e.stopPropagation()
         this.$store.commit('SET_ALL_NOTES_INACTIVE')        
