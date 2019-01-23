@@ -86,7 +86,7 @@ export default {
     max-width 300px
     background #eeeeee7d
     border-right 1px solid #ccc
-    overflow-y scroll
+    overflow-y auto
     .title
       border-bottom 1px solid #ccc
       display flex

@@ -1,5 +1,6 @@
 <template>
     <!-- Main content / middle -->
+    <div class="note-wrap">
       <main v-if='$store.state.notes.length'>
         <div class="content-actions" v-if='$store.state.note'>                    
           <div>
@@ -13,17 +14,19 @@
         </div>
         <textarea v-model='$store.state.note.content' @keyup='handleContentEdit' v-if='$store.state.note'></textarea>
       </main>
-      <main v-else>
+
+      <main v-else>        
         <h3>You have no notes :(</h3>
         <a href="#" class="new-note" @click.prevent="$store.dispatch('addNewNote')">
           Create New Note!
         </a>
       </main>
+    </div>
 </template>
 
 
-<script>
-  export default {   
+<script>  
+  export default {    
     methods: {    
       async handleContentEdit (e)
       {
@@ -54,11 +57,15 @@
 
 
 <style lang="stylus" scoped>
+  .note-wrap
+    display flex
+    flex-direction column
+    flex-grow 1
+    border-right 10px solid #333
   main
     display flex
-    flex-grow 1
-    flex-direction column
-    border-right 10px solid #333
+    flex-direction column    
+    
   .content-actions
       color #444
       border-bottom 1px dotted #ccc

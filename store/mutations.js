@@ -30,6 +30,11 @@ const mutations = {
   SET_XHR_MESSAGE (state, payload)
   {
     state.xhrMessages[payload.key] = payload.message
+  },
+
+  TOGGLE_FETCHING (state)
+  {
+    state.isFetchingNotes = !state.isFetchingNotes
   }
 }
 

@@ -23,7 +23,9 @@ const state = {
 
   xhrMessages: {
     auth: null,        
-  }
+  },
+
+  isFetchingNotes: true,
   
   
 }

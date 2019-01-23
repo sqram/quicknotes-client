@@ -3,7 +3,9 @@
     <!-- Main content / middle -->
     <Top />
     
-    <main>
+    <Loader  v-if='$store.state.isFetchingNotes' /> 
+    
+    <main v-else>
       <Aside />
       <Notes />
     </main>
@@ -18,18 +20,19 @@
   import Top from '~/components/Top.vue'
   import Aside from '~/components/Aside.vue'
   import Notes from '~/components/Notes.vue'
-
+  import Loader from '~/components/Loader.vue'
 
   export default {    
     components: {
       Top,
       Aside,
       Notes,
+      Loader
     },
 
     data ()
     {
-      return {
+      return {        
         // Is title being edited? Fill with an ID to make it editable (true).
         isBeingEdited: null,              
       }
@@ -140,5 +143,7 @@
 <style lang="stylus">   
   main
     display flex
-    height 100%  
+    height 100%
+
+  
 </style>

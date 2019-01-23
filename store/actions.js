@@ -1,4 +1,6 @@
 import Axios from 'axios'
+import mutations from './mutations'
+
 
 var jwt = ''
 if (window.localStorage.getItem('vuex'))
@@ -22,9 +24,10 @@ const actions = {
   /**
    * Returns all notes from a user
    */
-  async getAllNotes ()
+  async getAllNotes ({ commit })
   {
-    let notes = await axios.get('/notes')      
+    let notes = await axios.get('/notes')
+    commit('TOGGLE_FETCHING')   
     return notes.data
   },
 

@@ -61,7 +61,6 @@ export default {
     handleSignin (e)
     {      
       //TODO validate 
-      console.log('ay')
       if (this.signinEmail && this.signinPassword) 
       {
         this.$store.dispatch('auth', {
