@@ -13,7 +13,7 @@
             <span>{{ formattedEditDate }}</span>
           </div>
           <div class="toggle">  
-            <input class="tgl tgl-flat" id="cb4" type="checkbox" :checked=isMarkdown />
+            <input class="tgl tgl-flat" id="cb4" type="checkbox" :checked=isMarkdown v-model='isMarkdown' />
             <label class="tgl-btn" for="cb4"></label>
             <span>Markdown: </span>
             <span>{{ isMarkdown }}</span>
