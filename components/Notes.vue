@@ -42,7 +42,7 @@
     data ()
     {
       return {
-        isMarkdown: true,
+        isMarkdown: false,
       }
     },
 
