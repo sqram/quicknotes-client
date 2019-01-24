@@ -13,7 +13,7 @@
             <span>{{ formattedEditDate }}</span>
           </div>
           <div class="toggle">  
-            <input class="tgl tgl-flat" id="cb4" type="checkbox" :checked=isMarkdown v-model='isMarkdown' />
+            <input class="tgl tgl-flat" id="cb4" type="checkbox" :checked=isMarkdown />
             <label class="tgl-btn" for="cb4"></label>
             <span>Markdown: </span>
             <span>{{ isMarkdown }}</span>
@@ -45,6 +45,7 @@
         isMarkdown: true,
       }
     },
+
     methods: {
       handleDblClick ()
       {        
@@ -109,37 +110,36 @@
     flex-direction column    
     
   .content-actions
-      color #444
+      color #555
       border-bottom 1px dotted #ccc
       background rgba(186, 209, 214, 0.18) //rgba(#333, 10%)
       display flex
       align-items center
       padding 10px 1em
       justify-content space-between
-      font-size 80%      
+      font-size 80%
       div
         display flex      
         align-items center
+        
         &.toggle
-          span
+          span:first-of-type
             display inline-block
             padding-left 10px
             color #777
+          span:last-of-type
+            width 54px
+            
         span:first-of-type
           font-weight bold
           padding-right 10px
-        input
-          margin 0
-          background none 
-          padding 0
-          height 19px
-          border none 
-          color #2e6ce6
-          font-weight bold
+
+       
 
   .compiled
-    
+    box-sizing border-box
     padding 10px 20px
+
   textarea
       height 100%
       width 100%
@@ -148,84 +148,75 @@
       box-sizing border-box
       &:focus
         outline none
-  h3
-    color #ccc
-    margin 2em 0 0 0
-    font-size 3em
-  .new-note
-    display block
-    border 5px solid rgba(186, 209, 214, 0.18)
-    padding 1em 0
-    width 40%
-    margin 3em auto 0
-    background #4ca4b5
-    color #fff
-    text-decoration none
-    border-radius 5px
-    font-weight bold
-    text-transform uppercase
 
+
+
+
+
+// Toggle button
   .tgl {
-  display: none;
-}
-.tgl, .tgl:after, .tgl:before, .tgl *, .tgl *:after, .tgl *:before, .tgl + .tgl-btn {
-  box-sizing: border-box;
-}
-.tgl::-moz-selection, .tgl:after::-moz-selection, .tgl:before::-moz-selection, .tgl *::-moz-selection, .tgl *:after::-moz-selection, .tgl *:before::-moz-selection, .tgl + .tgl-btn::-moz-selection {
-  background: none;
-}
-.tgl::selection, .tgl:after::selection, .tgl:before::selection, .tgl *::selection, .tgl *:after::selection, .tgl *:before::selection, .tgl + .tgl-btn::selection {
-  background: none;
-}
-.tgl + .tgl-btn {
-  outline: 0;
-  display: block;
-  width: 4em;
-  height: 2em;
-  position: relative;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-}
-.tgl + .tgl-btn:after, .tgl + .tgl-btn:before {
-  position: relative;
-  display: block;
-  content: "";
-  width: 50%;
-  height: 100%;
-}
-.tgl + .tgl-btn:after {
-  left: 0;
-}
-.tgl + .tgl-btn:before {
-  display: none;
-}
-.tgl:checked + .tgl-btn:after {
-  left: 50%;
-}
+    display: none;
+  }
+  .tgl, .tgl:after, .tgl:before, .tgl *, .tgl *:after, .tgl *:before, .tgl + .tgl-btn {
+    box-sizing: border-box;
+  }
+  .tgl::-moz-selection, .tgl:after::-moz-selection, .tgl:before::-moz-selection, .tgl *::-moz-selection, .tgl *:after::-moz-selection, .tgl *:before::-moz-selection, .tgl + .tgl-btn::-moz-selection {
+    background: none;
+  }
+  .tgl::selection, .tgl:after::selection, .tgl:before::selection, .tgl *::selection, .tgl *:after::selection, .tgl *:before::selection, .tgl + .tgl-btn::selection {
+    background: none;
+  }
 
-.tgl-flat + .tgl-btn {
-  padding: 2px;
-  transition: all .2s ease;
-  background: #fff;
-  border: 4px solid #f2f2f2;
-  border-radius: 2em;
-}
-.tgl-flat + .tgl-btn:after {
-  transition: all .2s ease;
-  background: #f2f2f2;
-  content: "";
-  border-radius: 1em;
-}
-.tgl-flat:checked + .tgl-btn {
-  border: 4px solid #7FC6A6;
-}
-.tgl-flat:checked + .tgl-btn:after {
-  left: 50%;
-  background: #7FC6A6;
-}
+  .tgl + .tgl-btn {
+    outline: 0;
+    display: block;
+    width: 4em;
+    height: 2em;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .tgl + .tgl-btn:after, .tgl + .tgl-btn:before {
+    position: relative;
+    display: block;
+    content: "";
+    width: 50%;
+    height: 100%;
+  }
+  .tgl + .tgl-btn:after {
+    left: 0;
+  }
+  .tgl + .tgl-btn:before {
+    display: none;
+  }
+  .tgl:checked + .tgl-btn:after {
+    //left: 50%;
+  }
+
+  // theme
+  .tgl-flat + .tgl-btn {
+    padding: 2px;
+    transition: all .2s ease;
+    background: #fff;
+    border: 4px solid #f2f2f2;
+    border-radius: 2em;
+  }
+  .tgl-flat + .tgl-btn:after {
+    transition: all .2s ease;
+    background: #f2f2f2;
+    //content: "";
+    border-radius: 1em;
+  }
+  .tgl-flat:checked + .tgl-btn {
+    border: 4px solid #7FC6A6;
+  }
+  .tgl-flat:checked + .tgl-btn:after {
+    left: 50%;
+    background: #7FC6A6;
+  }
 
 </style>
 

@@ -1,6 +1,5 @@
 <template>
-  <div v-if='this.$store.state.user.jwt'>
-    <!-- Main content / middle -->
+  <div v-if='this.$store.state.user.jwt'>    
     <Top />
     <Loader v-if='$store.state.isFetchingNotes' />
     <main v-else>
