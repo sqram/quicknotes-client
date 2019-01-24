@@ -4,7 +4,7 @@
         <!-- <Article v-for='(note, index) in notes' :key=note.id :title=note.title :id=note.id  /> -->
         <!-- <transition-group name="fade"> -->
           <nuxt-link 
-            :to="`/?${note.id}`" 
+            :to="`/${note.id}`" 
             class="title" 
             v-for='note in $store.state.notes' 
             :key=note.id :data-id=note.id 

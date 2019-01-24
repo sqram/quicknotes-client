@@ -35,6 +35,7 @@ const mutations = {
   TOGGLE_FETCHING (state)
   {
     state.isFetchingNotes = !state.isFetchingNotes
+    console.log(state.isFetchingNotes)
   }
 }
 
