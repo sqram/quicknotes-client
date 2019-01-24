@@ -57,7 +57,6 @@ export default {
       {
         // TODO make scroll stop when clicking  
         e.preventDefault()
-        console.log('--')
         this.$store.commit('SET_ALL_NOTES_INACTIVE')        
         this.$store.commit('SET_ACTIVE_NOTE', e.currentTarget.dataset.id)
       },
