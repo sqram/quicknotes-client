@@ -1,4 +1,4 @@
-//<template>
+<template>
   <div class="top-wrap">
     
       <div class="topnav">   
@@ -17,8 +17,7 @@
 
 <script>
 export default {
-  name: 'Top',
-
+  name: 'Top',  
   methods: {
     handleNewNote ()
     {     

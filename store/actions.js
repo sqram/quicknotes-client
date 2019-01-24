@@ -26,6 +26,7 @@ const actions = {
    */
   async getAllNotes ({ commit })
   {
+    commit('TOGGLE_FETCHING')   
     let notes = await axios.get('/notes')
     commit('TOGGLE_FETCHING')   
     return notes.data

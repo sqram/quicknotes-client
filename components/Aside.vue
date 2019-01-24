@@ -3,8 +3,8 @@
       <div v-if='$store.state.notes.length'>
         <!-- <Article v-for='(note, index) in notes' :key=note.id :title=note.title :id=note.id  /> -->
         <!-- <transition-group name="fade"> -->
-          <router-link 
-            :to="`/${note.id}`" 
+          <nuxt-link 
+            :to="`/?${note.id}`" 
             class="title" 
             v-for='note in $store.state.notes' 
             :key=note.id :data-id=note.id 
@@ -16,7 +16,7 @@
               <a href="#" @click.prevent='handleTitleEditClick' :data-id=note.id class="edit"></a>
               <a href="#" @click.prevent='handleDelete' :data-id=note.id class="delete"></a>                
             </div>
-          </router-link>
+          </nuxt-link>
         <!-- </transition-group> -->
       </div>
       <div v-else class="no-notes">No notes</div>
@@ -31,7 +31,7 @@ export default {
     return {
       isBeingEdited: false
     }
-  },
+  },  
   
   methods: {
      
@@ -57,7 +57,7 @@ export default {
       {
         // TODO make scroll stop when clicking  
         e.preventDefault()
-        e.stopPropagation()
+        console.log('--')
         this.$store.commit('SET_ALL_NOTES_INACTIVE')        
         this.$store.commit('SET_ACTIVE_NOTE', e.currentTarget.dataset.id)
       },

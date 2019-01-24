@@ -25,7 +25,7 @@ const state = {
     auth: null,        
   },
 
-  isFetchingNotes: true,
+  isFetchingNotes: false,
   
   
 }

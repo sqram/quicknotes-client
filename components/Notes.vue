@@ -1,6 +1,7 @@
 <template>
     <!-- Main content / middle -->
     <div class="note-wrap">
+      <router-view></router-view>
       <main v-if='$store.state.notes.length'>
         <div class="content-actions" v-if='$store.state.note'>                    
           <div>
