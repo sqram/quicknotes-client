@@ -1,31 +1,5 @@
 import axios from '~/plugins/axios'
-import mutations from './mutations'
 
-
-// var jwt = ''
-// if (window.localStorage.getItem('vuex'))
-// {
-//   let localStoreData = JSON.parse(window.localStorage.getItem('vuex'))
-//   console.log(localStoreData)
-//   if (localStoreData.user.jwt)
-//   {
-    
-//     jwt = localStoreData.user.jwt
-//   }
-// }
-
-
-// // const axios = Axios.create({
-// //   baseURL: !!window.location.href.match(/localhost/) ? 'http://localhost:3001' : 'https://quicknotes.appspot.com/',
-// //   headers: {'Authorization' : jwt ? `Bearer ${jwt}` : ''}
-// // });
-
-
-// axios.defaults.baseURL = !!window.location.href.match(/localhost/) ? 'http://localhost:3001' : 'https://quicknotes.appspot.com/'
-// if (jwt)
-// {
-//   axios.defaults.headers.common['Authorization'] = `Bearer ${jwt}`
-// }
 
 
 const actions = {
@@ -43,7 +17,7 @@ const actions = {
 
 
   /**
-   * Update all notes.
+   * Fill/update state.notes, which hold all notes.
    * Typically called on component load   
    */
   async updateNote ({ commit, state }, noteObj)
@@ -78,7 +52,6 @@ const actions = {
   // Registers or signs a user in
   async auth ({ commit, state }, payload)
   {
-    // let { email, pwd } = payload
     let req = await axios.post(payload.api, payload)
     if (req.data.status == 'success')
     {

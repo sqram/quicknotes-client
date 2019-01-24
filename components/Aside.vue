@@ -1,23 +1,22 @@
 <template> 
   <aside>
       <div v-if='$store.state.notes.length'>
-        <!-- <Article v-for='(note, index) in notes' :key=note.id :title=note.title :id=note.id  /> -->
-        <!-- <transition-group name="fade"> -->
-          <router-link 
+        
+        <transition-group name="fade">
+          <nuxt-link 
             :to="`/${note.id}`" 
             class="note-title" 
             v-for='note in $store.state.notes' 
             :key=note.id :data-id=note.id 
             @click.native='handleSideLinkClick' 
-            :class="{ active: note.isActive }">
-            
+            :class="{ active: note.isActive }">            
             <input type="text" :value=note.title :disabled='isBeingEdited != note.id' @focusout='handleTitleFocusOut' :data-id=note.id>
             <div class="title-action">
               <a href="#" @click.prevent='handleTitleEditClick' :data-id=note.id class="edit"></a>
               <a href="#" @click.prevent='handleDelete' :data-id=note.id class="delete"></a>                
             </div>
-          </router-link>
-        <!-- </transition-group> -->
+          </nuxt-link>
+        </transition-group>
       </div>
       <div v-else class="no-notes">No notes</div>
     </aside> 
@@ -35,44 +34,43 @@ export default {
   
   methods: {
      
-      handleTitleFocusOut (e)
-      { 
-        // Grab copy of active note. Change title. Update note        
-        this.isBeingEdited = null
-        let note = this.$store.state.note
-        note.title = e.currentTarget.value
-        this.$store.dispatch('updateNote', note)
-      },
-
-      handleTitleEditClick (e)
-      {
-        let id = e.currentTarget.dataset.id
-        this.isBeingEdited = id        
-        let input = document.querySelector(`input[data-id='${id}']`)        
-        this.$nextTick(() => input.focus())
-      },
-
-
-      handleSideLinkClick (e)
-      {
-        // TODO make scroll stop when clicking  
-        e.preventDefault()
-        this.$store.commit('SET_ALL_NOTES_INACTIVE')        
-        this.$store.commit('SET_ACTIVE_NOTE', e.currentTarget.dataset.id)
-      },
-    
-
-      async handleDelete (e)
-      {
-        e.stopPropagation()
-        let remove = confirm('Delete?')
-        if (remove)
-        {
-          this.$store.dispatch('deleteNote', e.currentTarget.dataset.id)          
-        }
-      },  
-    
+    handleTitleFocusOut (e)
+    { 
+      // Grab copy of active note. Change title. Update note        
+      this.isBeingEdited = null
+      let note = this.$store.state.note
+      note.title = e.currentTarget.value
+      this.$store.dispatch('updateNote', note)
     },
+
+    handleTitleEditClick (e)
+    {
+      let id = e.currentTarget.dataset.id
+      this.isBeingEdited = id        
+      let input = document.querySelector(`input[data-id='${id}']`)        
+      this.$nextTick(() => input.focus())
+    },
+
+
+    handleSideLinkClick (e)
+    {
+      e.preventDefault()
+      this.$store.commit('SET_ALL_NOTES_INACTIVE')        
+      this.$store.commit('SET_ACTIVE_NOTE', e.currentTarget.dataset.id)
+    },
+    
+
+    async handleDelete (e)
+    {
+      e.stopPropagation()
+      let remove = confirm('Delete?')
+      if (remove)
+      {
+        this.$store.dispatch('deleteNote', e.currentTarget.dataset.id)          
+      }
+    },  
+    
+  },
 }
 </script>
 
@@ -155,5 +153,12 @@ export default {
         color #444
         border none
         paddomg 0    
+
+
+  .fade-enter-active, .fade-leave-active
+    transition opacity .5s  
+  .fade-enter, .fade-leave-to
+    opacity 0
+  
   
 </style>

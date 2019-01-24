@@ -46,7 +46,6 @@
       }
     },
     methods: {
-      
       handleDblClick ()
       {        
         this.isMarkdown = false
