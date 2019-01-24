@@ -3,9 +3,9 @@
       <div v-if='$store.state.notes.length'>
         <!-- <Article v-for='(note, index) in notes' :key=note.id :title=note.title :id=note.id  /> -->
         <!-- <transition-group name="fade"> -->
-          <nuxt-link 
+          <router-link 
             :to="`/${note.id}`" 
-            class="title" 
+            class="note-title" 
             v-for='note in $store.state.notes' 
             :key=note.id :data-id=note.id 
             @click.native='handleSideLinkClick' 
@@ -16,7 +16,7 @@
               <a href="#" @click.prevent='handleTitleEditClick' :data-id=note.id class="edit"></a>
               <a href="#" @click.prevent='handleDelete' :data-id=note.id class="delete"></a>                
             </div>
-          </nuxt-link>
+          </router-link>
         <!-- </transition-group> -->
       </div>
       <div v-else class="no-notes">No notes</div>
@@ -86,7 +86,7 @@ export default {
     background #eeeeee7d
     border-right 1px solid #ccc
     overflow-y auto
-    .title
+    .note-title
       border-bottom 1px solid #ccc
       display flex
       text-decoration none

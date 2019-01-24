@@ -26,20 +26,20 @@ module.exports = {
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: { color: 'salmon' },
 
   /*
   ** Global CSS
   */
   css: [
+    '~/assets/style/app.styl'
   ],
 
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    { src: '~/plugins/localStorage.js', ssr: false },
-    { src: '~/plugins/axios.js', ssr: false }
+ 
   ],
 
   /*
@@ -52,6 +52,8 @@ module.exports = {
   ** Build configuration
   */
   build: {
+   
+    
     /*
     ** You can extend webpack config here
     */

@@ -2,7 +2,7 @@
     <!-- Main content / middle -->
     <div class="note-wrap">
       
-      <main v-if='$store.state.notes.length'>
+      <main v-if='$store.state.notes.length'> 
         <div class="content-actions" v-if='$store.state.note'>                    
           <div>
             <span>Created On: </span>
@@ -12,8 +12,19 @@
             <span>Last Edited:</span>
             <span>{{ formattedEditDate }}</span>
           </div>
+          <div class="toggle">  
+            <input class="tgl tgl-flat" id="cb4" type="checkbox" :checked=isMarkdown v-model='isMarkdown' />
+            <label class="tgl-btn" for="cb4"></label>
+            <span>Markdown: </span>
+            <span>{{ isMarkdown }}</span>
+          </div>
         </div>
-        <textarea v-model='$store.state.note.content' @keyup='handleContentEdit' v-if='$store.state.note'></textarea>
+        <div class="compiled" v-html="compiledMarkDown" v-if='isMarkdown' @dblclick='handleDblClick'></div>
+        <textarea          
+          v-model='$store.state.note.content'          
+          @keydown='handleContentEdit'
+          v-if='$store.state.note && !isMarkdown'
+          spellcheck="false"></textarea>
       </main>
 
       <main v-else>        
@@ -28,9 +39,34 @@
 
 <script>  
   export default {    
-    methods: {    
+    data ()
+    {
+      return {
+        isMarkdown: true,
+      }
+    },
+    methods: {
+      
+      handleDblClick ()
+      {        
+        this.isMarkdown = false
+      },
+
       async handleContentEdit (e)
-      {
+      {       
+        // If it's tab, insert tab
+        // https://jsfiddle.net/2wAzx/13/
+        let text = e.currentTarget.value
+        let keycode = e.keyCode || e.which        
+        if (keycode == 9)
+        {
+          let start = e.currentTarget.selectionStart;
+          let end   = e.currentTarget.selectionEnd;          
+          e.currentTarget.value = text.substring( 0, start ) + "\t" + text.substring( end );
+          e.currentTarget.selectionStart = e.currentTarget.selectionEnd = start + 1;          
+          e.preventDefault()
+        }
+
         this.$store.dispatch('updateNote', {
           title: this.$store.state.note.title,
           content: e.currentTarget.value,
@@ -50,6 +86,11 @@
       {
         let date = new Date(this.$store.state.note.createdDate).toString()
         return date.split(' ').slice(0, 4).join(' ')        
+      },
+      compiledMarkDown ()
+      {       
+        
+        return marked(this.$store.state.note.content, { sanitize: true })
       }
     }
   }
@@ -58,6 +99,7 @@
 
 
 <style lang="stylus" scoped>
+  
   .note-wrap
     display flex
     flex-direction column
@@ -78,6 +120,12 @@
       font-size 80%      
       div
         display flex      
+        align-items center
+        &.toggle
+          span
+            display inline-block
+            padding-left 10px
+            color #777
         span:first-of-type
           font-weight bold
           padding-right 10px
@@ -89,6 +137,10 @@
           border none 
           color #2e6ce6
           font-weight bold
+
+  .compiled
+    
+    padding 10px 20px
   textarea
       height 100%
       width 100%
@@ -113,6 +165,68 @@
     border-radius 5px
     font-weight bold
     text-transform uppercase
+
+  .tgl {
+  display: none;
+}
+.tgl, .tgl:after, .tgl:before, .tgl *, .tgl *:after, .tgl *:before, .tgl + .tgl-btn {
+  box-sizing: border-box;
+}
+.tgl::-moz-selection, .tgl:after::-moz-selection, .tgl:before::-moz-selection, .tgl *::-moz-selection, .tgl *:after::-moz-selection, .tgl *:before::-moz-selection, .tgl + .tgl-btn::-moz-selection {
+  background: none;
+}
+.tgl::selection, .tgl:after::selection, .tgl:before::selection, .tgl *::selection, .tgl *:after::selection, .tgl *:before::selection, .tgl + .tgl-btn::selection {
+  background: none;
+}
+.tgl + .tgl-btn {
+  outline: 0;
+  display: block;
+  width: 4em;
+  height: 2em;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.tgl + .tgl-btn:after, .tgl + .tgl-btn:before {
+  position: relative;
+  display: block;
+  content: "";
+  width: 50%;
+  height: 100%;
+}
+.tgl + .tgl-btn:after {
+  left: 0;
+}
+.tgl + .tgl-btn:before {
+  display: none;
+}
+.tgl:checked + .tgl-btn:after {
+  left: 50%;
+}
+
+.tgl-flat + .tgl-btn {
+  padding: 2px;
+  transition: all .2s ease;
+  background: #fff;
+  border: 4px solid #f2f2f2;
+  border-radius: 2em;
+}
+.tgl-flat + .tgl-btn:after {
+  transition: all .2s ease;
+  background: #f2f2f2;
+  content: "";
+  border-radius: 1em;
+}
+.tgl-flat:checked + .tgl-btn {
+  border: 4px solid #7FC6A6;
+}
+.tgl-flat:checked + .tgl-btn:after {
+  left: 50%;
+  background: #7FC6A6;
+}
 
 </style>
 

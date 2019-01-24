@@ -1,31 +1,31 @@
-import axios from 'axios'
+import axios from '~/plugins/axios'
 import mutations from './mutations'
 
 
-var jwt = ''
-if (window.localStorage.getItem('vuex'))
-{
-  let localStoreData = JSON.parse(window.localStorage.getItem('vuex'))
-  console.log(localStoreData)
-  if (localStoreData.user.jwt)
-  {
+// var jwt = ''
+// if (window.localStorage.getItem('vuex'))
+// {
+//   let localStoreData = JSON.parse(window.localStorage.getItem('vuex'))
+//   console.log(localStoreData)
+//   if (localStoreData.user.jwt)
+//   {
     
-    jwt = localStoreData.user.jwt
-  }
-}
+//     jwt = localStoreData.user.jwt
+//   }
+// }
 
 
-// const axios = Axios.create({
-//   baseURL: !!window.location.href.match(/localhost/) ? 'http://localhost:3001' : 'https://quicknotes.appspot.com/',
-//   headers: {'Authorization' : jwt ? `Bearer ${jwt}` : ''}
-// });
+// // const axios = Axios.create({
+// //   baseURL: !!window.location.href.match(/localhost/) ? 'http://localhost:3001' : 'https://quicknotes.appspot.com/',
+// //   headers: {'Authorization' : jwt ? `Bearer ${jwt}` : ''}
+// // });
 
 
-axios.defaults.baseURL = !!window.location.href.match(/localhost/) ? 'http://localhost:3001' : 'https://quicknotes.appspot.com/'
-if (jwt)
-{
-  axios.defaults.headers.common['Authorization'] = `Bearer ${jwt}`
-}
+// axios.defaults.baseURL = !!window.location.href.match(/localhost/) ? 'http://localhost:3001' : 'https://quicknotes.appspot.com/'
+// if (jwt)
+// {
+//   axios.defaults.headers.common['Authorization'] = `Bearer ${jwt}`
+// }
 
 
 const actions = {

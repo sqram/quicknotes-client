@@ -4,13 +4,10 @@
 
 <script>
   import Notes from '~/components/Notes.vue'
-  export default {
-    components: {
-      
-      
+  export default {    
+    components: {     
       Notes,
-    },
-    
+    }  
   }
 </script>
 
