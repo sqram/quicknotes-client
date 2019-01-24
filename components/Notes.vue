@@ -148,6 +148,24 @@
       box-sizing border-box
       &:focus
         outline none
+  h3
+    text-align center
+    color #ccc
+    margin-top 2em
+    font-size 2em
+  .new-note
+    display block
+    border 5px solid rgba(186, 209, 214, 0.18)
+    padding 1em 0
+    width 40%
+    margin 3em auto 0
+    background #4ca4b5
+    color #fff
+    text-decoration none
+    border-radius 5px
+    font-weight bold
+    text-transform uppercase
+    text-align center
 
 
 
