@@ -82,7 +82,8 @@ export default {
     flex-basis 30%
     max-width 300px
     background #eeeeee7d
-    border-right 1px solid #ccc
+    //border-right 1px solid #ccc
+    border-right 7px solid #4ca4b52b
     overflow-y auto
     .note-title
       border-bottom 1px solid #ccc
@@ -95,7 +96,6 @@ export default {
           visibility  visible  
       div.title-action
         display flex  
-        //background pink
         position absolute
         right 0
         top 0
