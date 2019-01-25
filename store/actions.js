@@ -50,23 +50,31 @@ const actions = {
   },
 
   // Registers or signs a user in
-  async auth ({ commit, state }, payload)
+  async auth ({ commit }, payload)
   {
     let req = await axios.post(payload.api, payload)
+    
     if (req.data.status == 'success')
     {
+      commit('SET_USER_DATA', {
+        email: payload.email,
+        jwt: req.data.jwt
+      })
+
+      // Update our axios plugin to use the jwt on requests from now on
+      axios.defaults.headers.common['Authorization'] = `Bearer ${req.data.jwt}`
+
       window.location.href = '/#/notes'
+    }   
+    else
+    {
+      commit('SET_XHR_MESSAGE', {
+        key: 'auth',
+        message: req.data.payload.message
+      })        
     }
 
-    commit('SET_USER_DATA', {
-      email: payload.email,
-      jwt: req.data.jwt
-    })
-
-    commit('SET_XHR_MESSAGE', {
-      key: 'auth',
-      message: req.data.payload.message
-    })        
+    
   },
 
 }
