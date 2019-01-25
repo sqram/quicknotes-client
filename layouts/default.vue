@@ -8,7 +8,7 @@ export default {
   head ()
     {
       return {
-        title: 'Notes',
+        // title: 'Notes',
         script: [
           { src: 'https://unpkg.com/marked@0.3.6'}
         ]
@@ -16,7 +16,6 @@ export default {
     }
 }
 </script>
-
 <style lang="stylus">
   body
     font-family 'Avenir', Helvetica, Arial, sans-serif

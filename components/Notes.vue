@@ -14,7 +14,7 @@
           </div>
           <div class="toggle">  
             <input class="tgl tgl-flat" id="cb4" type="checkbox" :checked=isMarkdown v-model='isMarkdown' />
-            <label class="tgl-btn" for="cb4"></label>
+            <label class="tgl-btn" for="cb4" title="You can use 'esc' key to toggle this switch"></label>
             <span>Markdown: </span>
             <span>{{ isMarkdown }}</span>
           </div>
@@ -45,7 +45,18 @@
         isMarkdown: false,
       }
     },   
-      
+    
+    mounted ()
+    {
+      document.onkeyup =  (e) => {
+        let keycode = e.keyCode || e.which
+        if (keycode == 27)
+        {
+          this.isMarkdown = !this.isMarkdown
+          console.log(this.isMarkdown)
+        }
+      };
+    },
     methods: {
       handleDblClick ()
       {        

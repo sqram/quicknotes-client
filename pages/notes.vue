@@ -31,7 +31,8 @@
     * and main section is filled
     */
     async beforeMount()
-    {                   
+    {      
+
       var note
       var notes = await this.$store.dispatch('getAllNotes'); 
       
