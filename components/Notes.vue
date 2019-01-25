@@ -88,8 +88,7 @@
         return date.split(' ').slice(0, 4).join(' ')        
       },
       compiledMarkDown ()
-      {       
-        
+      {      
         return marked(this.$store.state.note.content, { sanitize: true })
       }
     }
@@ -99,16 +98,17 @@
 
 
 <style lang="stylus" scoped>
+  @require '~assets/style/variables'
   
   .note-wrap
     display flex
     flex-direction column
     flex-grow 1
-    border-right 10px solid #333
+    border-right 10px solid $top-bg
   main
     display flex
     flex-direction column    
-    
+    height 100%
   .content-actions
       color #555
       border-bottom 1px dotted #ccc

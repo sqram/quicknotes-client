@@ -77,13 +77,14 @@ export default {
 
 
 <style lang="stylus" scoped>
-
+  @require '~assets/style/variables'
+    
   aside    
     flex-basis 30%
     max-width 300px
-    background #eeeeee7d
+    background $aside-bg
     //border-right 1px solid #ccc
-    border-right 7px solid #4ca4b52b
+    border-right 7px solid rgba(76,164,181,0.169)
     overflow-y auto
     .note-title
       border-bottom 1px solid #ccc
@@ -112,10 +113,10 @@ export default {
           background transparent
         &:focus
           cursor default
-      &.active
-        background #bad1d699
+      &.active          
+        background $primary
         font-weight bold
-        border-bottom 2px solid #333
+        border-bottom 2px solid $active-link-border
         
           
       a        

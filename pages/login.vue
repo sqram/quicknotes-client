@@ -86,6 +86,7 @@ export default {
   header 
     background #bad1d699
     padding 1em 0
+    text-align center
   main
     display flex
     width 80%
@@ -119,7 +120,7 @@ export default {
     background alpha(pink, 30%)
     padding 1em
     margin-top 1em
-    
+    text-align center
     margin 2em auto  0
     border 2px solid pink
     max-width 800px

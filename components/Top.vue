@@ -39,13 +39,15 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  @require '~assets/style/variables'
+
   .top-wrap
     width 100%    
     padding 0
     display flex
     flex-direction column
   .topnav
-    background #343a40    
+    background $top-bg
     color #fff
     display flex
     width 100%
@@ -62,17 +64,17 @@ export default {
     flex-grow 1       
     justify-content flex-end
     a
-      background #bad1d699
-      background #bad1d62e
+      background $top-link-bg
+      color $top-link-color
       padding 5px 10px
       border-radius 3px
       font-size 85%
       text-decoration none
-      color #fff
+      
       margin-right 15px
       // new note
       &.new-note
-        background #4ca4b5
+        background $cta-bg
     input
       display none     
 </style>

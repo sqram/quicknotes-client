@@ -7,7 +7,7 @@
       <nuxt-child></nuxt-child>
     </main>
   </div>
-  <div v-else>
+  <div v-else class="login-first">
     <a href="#/login">Login first</a>
   </div>
 
@@ -72,8 +72,20 @@
 
 
 
-<style lang="stylus">   
+<style lang="stylus" scoped>
   main
     display flex
-    height 100%  
+    height 100%
+  .login-first    
+    a
+      display block
+      width 50%
+      max-width 300px
+      background cadetblue
+      color #fff
+      text-decoration none 
+      text-align center 
+      padding 1em 0
+      margin 4em auto
+      border-radius 5px
 </style>
