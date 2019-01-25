@@ -4,7 +4,7 @@
 
 <script>
   import Notes from '~/components/Notes.vue'
-  export default {    
+  export default {
     components: {     
       Notes,
     }  

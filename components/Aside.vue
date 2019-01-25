@@ -4,7 +4,7 @@
         
         <transition-group name="fade">
           <nuxt-link 
-            :to="`/${note.id}`" 
+            :to="`/notes/${note.id}`" 
             class="note-title" 
             v-for='note in $store.state.notes' 
             :key=note.id :data-id=note.id 

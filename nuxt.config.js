@@ -5,14 +5,15 @@ module.exports = {
   mode: 'spa',
 
   router: {
-    mode: 'hash'
+    mode: 'hash',
+    //base: '/app/'
   },
 
   /*
   ** Headers of the page
   */
   head: {
-    title: pkg.name,
+    title: 'Spritz & Coffee - note taking web app',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },

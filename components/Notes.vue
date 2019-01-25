@@ -44,8 +44,8 @@
       return {
         isMarkdown: false,
       }
-    },
-
+    },   
+      
     methods: {
       handleDblClick ()
       {        
