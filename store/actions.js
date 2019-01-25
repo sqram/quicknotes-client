@@ -55,7 +55,7 @@ const actions = {
     let req = await axios.post(payload.api, payload)
     if (req.data.status == 'success')
     {
-      window.location.href = '/'
+      window.location.href = '/#/notes'
     }
 
     commit('SET_USER_DATA', {
