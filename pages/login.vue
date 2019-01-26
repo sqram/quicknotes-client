@@ -43,7 +43,13 @@ export default {
       signinPassword: null,
     }
   },
-  
+  beforeMount ()
+  {
+    if (this.$store.state.user.jwt)
+    {
+      this.$router.push('/notes')
+    }
+  },
   methods: {
     handleRegister (e)
     {      
