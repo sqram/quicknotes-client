@@ -10,11 +10,11 @@
       <div class="desc">
         A super simple note-taking app. 100% free.
       </div>
-      <a href="#/login" class="cta">START HERE!</a>
+      <nuxt-link to='/login' class="cta">START HERE</nuxt-link>
     </div>
 
 
-    <div class="scroll">v</div>
+    
 
     <div class="app-info">   
         <div class="features">
@@ -42,7 +42,8 @@
 
 <script>
 export default {
-  layout: 'clean'
+  layout: 'clean',  
+  
 }
 </script>
 
@@ -82,8 +83,7 @@ export default {
       &:before
         color #fff
         content ''
-        position absolute
-        
+        position absolute        
         
   .desc
     text-align center
@@ -106,9 +106,6 @@ export default {
     color lighten(#b85b3f, 78%)
     &:hover
       border 6px solid darken(#b85b3f, 10%)
-  .scroll
-    height 6vh
-    visibility hidden
   .app-info
     display flex
     justify-content center

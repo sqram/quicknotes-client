@@ -47,7 +47,7 @@ export default {
   {
     if (this.$store.state.user.jwt)
     {
-      this.$router.push('/notes')
+      this.$router.push('/notes')      
     }
   },
   methods: {
